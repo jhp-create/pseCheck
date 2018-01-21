@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PriceList = props => {
-  console.log('inside pricelist', props)
+  console.log(props)
   return (
     <table>
       <thead>
@@ -12,15 +12,18 @@ const PriceList = props => {
         </tr>
       </thead>
       <tbody>
-        {renderPrice(props.price)}
+        {props.price[0] ? props.price[0].data.map(data => renderPrice(data)) : null}
       </tbody>
     </table>
   );
 }
 
 const renderPrice = data => {
+  console.log(data)
   return (
-    <tr></tr>
+    <tr key={data.date+data.close}>
+      <td>{data.symbol}</td>
+    </tr>
   );
 }
 
