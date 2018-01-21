@@ -1,4 +1,5 @@
 import React from 'react';
+import PriceChart from './priceChart';
 
 const PriceList = props => {
   console.log(props)
@@ -12,17 +13,20 @@ const PriceList = props => {
         </tr>
       </thead>
       <tbody>
-        {props.price[0] ? props.price[0].data.map(data => renderPrice(data)) : null}
+        {props.price[0] ? props.price.map(renderPrice) : null}
       </tbody>
     </table>
   );
 }
 
 const renderPrice = data => {
+  const stockData = data.data;
+  const prices = stockData.map(data => data.close);
   console.log(data)
   return (
-    <tr key={data.date+data.close}>
-      <td>{data.symbol}</td>
+    <tr key={stockData[0].symbol+stockData[0].close}>
+      <td>{stockData[0].symbol}</td>
+      <td><PriceChart data={prices} color='green'/></td>
     </tr>
   );
 }
