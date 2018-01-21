@@ -1,5 +1,6 @@
 import React from 'react';
 import PriceChart from './priceChart';
+import _ from 'lodash';
 
 const PriceList = props => {
   console.log(props)
@@ -22,11 +23,13 @@ const PriceList = props => {
 const renderPrice = data => {
   const stockData = data.data;
   const prices = stockData.map(data => data.close);
-  console.log(data)
+  console.log(stockData)
+  const recommended = ((stockData.reduce((acc,cur) => acc + cur.close, 0)/stockData.length)*0.99).toFixed(2);
   return (
     <tr key={stockData[0].symbol+stockData[0].close}>
       <td>{stockData[0].symbol}</td>
-      <td><PriceChart data={prices} color='green'/></td>
+      <td><PriceChart data={prices} /></td>
+      <td>{recommended}</td>
     </tr>
   );
 }
