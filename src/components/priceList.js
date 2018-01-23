@@ -5,12 +5,12 @@ import _ from 'lodash';
 const PriceList = props => {
   console.log(props)
   return (
-    <table>
+    <table className='price-list'>
       <thead>
-        <tr>
-          <th>Stock Code</th>
-          <th>Stock Prices</th>
-          <th>Recommended Price</th>
+        <tr className='row'>
+          <th className='col-1' >Stock Code</th>
+          <th className='col-2' >Stock Prices</th>
+          <th className='col-3' >Recommended Price</th>
         </tr>
       </thead>
       <tbody>
@@ -26,10 +26,10 @@ const renderPrice = data => {
   console.log(stockData)
   const recommended = ((stockData.reduce((acc,cur) => acc + cur.close, 0)/stockData.length)*0.99).toFixed(2);
   return (
-    <tr key={stockData[0].symbol+stockData[0].close}>
-      <td>{stockData[0].symbol}</td>
-      <td><PriceChart data={prices} /></td>
-      <td>{recommended}</td>
+    <tr key={stockData[0].symbol+stockData[0].close} className='row'>
+      <td className='col-1'>{stockData[0].symbol}</td>
+      <td className='col-2'><PriceChart data={prices} /></td>
+      <td className='col-3'>{recommended}</td>
     </tr>
   );
 }
