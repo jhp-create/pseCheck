@@ -29,7 +29,7 @@ const renderPrice = data => {
     <tr key={stockData[0].symbol+stockData[0].close} className='row'>
       <td className='col-1'>{stockData[0].symbol}</td>
       <td className='col-2'><PriceChart data={prices} /></td>
-      <td className='col-3'>{recommended}</td>
+      <td className='col-3'>Php {recommended}</td>
     </tr>
   );
 }
